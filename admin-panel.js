@@ -8,11 +8,11 @@ let currentEditingType = null;
 
 async function initAdmin() {
     await dataManager.init();
-    showTab("dashboard");
+    showTab("dashboard", document.querySelector("button[data-tab='dashboard']"));
     updateDashboard();
 }
 
-function showTab(tabName) {
+window.showTab = function(tabName, button) {
     // Hide all tabs
     document.querySelectorAll(".admin-tab").forEach(tab => {
         tab.classList.remove("active");
@@ -27,14 +27,14 @@ function showTab(tabName) {
     document.getElementById(tabName).classList.add("active");
     
     // Add active to clicked button
-    event.target.classList.add("active");
+    button.classList.add("active");
     
     // Load content
     if (tabName === "trainers") loadTrainers();
     else if (tabName === "packages") loadPackages();
     else if (tabName === "subjects") loadSubjects();
     else if (tabName === "bookings") loadBookings();
-}
+};
 
 function updateDashboard() {
     document.getElementById("totalTrainers").textContent = dataManager.getTrainers().length;

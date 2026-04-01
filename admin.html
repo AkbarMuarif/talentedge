@@ -19,11 +19,11 @@
 
 <div class="admin-container">
     <aside class="admin-sidebar">
-        <button onclick="showTab('dashboard')" class="sidebar-btn active">📊 Dashboard</button>
-        <button onclick="showTab('trainers')" class="sidebar-btn">👨‍🏫 Trainers</button>
-        <button onclick="showTab('packages')" class="sidebar-btn">💼 Packages</button>
-        <button onclick="showTab('subjects')" class="sidebar-btn">📚 Subjects</button>
-        <button onclick="showTab('bookings')" class="sidebar-btn">📋 Bookings</button>
+        <button onclick="showTab('dashboard', this)" data-tab="dashboard" class="sidebar-btn active">📊 Dashboard</button>
+        <button onclick="showTab('trainers', this)" data-tab="trainers" class="sidebar-btn">👨‍🏫 Trainers</button>
+        <button onclick="showTab('packages', this)" data-tab="packages" class="sidebar-btn">💼 Packages</button>
+        <button onclick="showTab('subjects', this)" data-tab="subjects" class="sidebar-btn">📚 Subjects</button>
+        <button onclick="showTab('bookings', this)" data-tab="bookings" class="sidebar-btn">📋 Bookings</button>
     </aside>
 
     <main class="admin-content">

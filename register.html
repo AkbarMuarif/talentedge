@@ -1,7 +1,36 @@
-<h2>Register TalentEdge</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - TalentEdge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<input type="email" id="email" placeholder="Email">
-<input type="password" id="password" placeholder="Password">
-<button onclick="register()">Register</button>
+<nav>
+    <h2>TalentEdge</h2>
+    <div>
+        <a href="index.html"><button class="btn">Home</button></a>
+        <a href="login.html"><button class="btn-outline">Login</button></a>
+    </div>
+</nav>
+
+<section class="cta">
+    <h2>Register for TalentEdge</h2>
+    <div class="card" style="max-width: 400px; margin: 40px auto;">
+        <input type="email" id="email" placeholder="Email" style="width: 100%; padding: 10px; margin: 10px 0; box-sizing: border-box;">
+        <input type="password" id="password" placeholder="Password" style="width: 100%; padding: 10px; margin: 10px 0; box-sizing: border-box;">
+        <button onclick="register()" class="btn" style="width: 100%; margin-top: 20px;">Register</button>
+        <p>Already have an account? <a href="login.html" style="color: #6366f1;">Login here</a></p>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 TalentEdge</p>
+</footer>
 
 <script type="module" src="auth.js"></script>
+
+</body>
+</html>

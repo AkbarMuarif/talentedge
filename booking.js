@@ -16,13 +16,27 @@ window.bookTrainer = async function() {
     let date = document.getElementById("date").value;
     let time = document.getElementById("time").value;
 
-    await addDoc(collection(db, "bookings"), {
-        email: user.email,
-        trainer: trainer,
-        package: packageType,
-        date: date,
-        time: time
-    });
+    if(!trainer || !packageType || !date || !time){
+        alert("Please fill in all fields");
+        return;
+    }
 
-    alert("Booking Successful!");
+    try {
+        await addDoc(collection(db, "bookings"), {
+            email: user.email,
+            trainer: trainer,
+            package: packageType,
+            date: date,
+            time: time,
+            timestamp: new Date()
+        });
+
+        alert("Booking Successful!");
+        document.getElementById("trainer").value = "";
+        document.getElementById("package").value = "";
+        document.getElementById("date").value = "";
+        document.getElementById("time").value = "";
+    } catch(error) {
+        alert("Booking failed: " + error.message);
+    }
 }

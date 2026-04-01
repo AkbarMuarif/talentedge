@@ -1,19 +1,56 @@
-<h2>Book Trainer</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Trainer - TalentEdge</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<select id="trainer">
-    <option>Bobby</option>
-    <option>Akbar</option>
-</select>
+<nav>
+    <h2>TalentEdge</h2>
+    <div>
+        <a href="index.html"><button class="btn">Home</button></a>
+        <a href="admin.html"><button class="btn-outline">Admin</button></a>
+    </div>
+</nav>
 
-<select id="package">
-    <option>Basic</option>
-    <option>Intermediate</option>
-    <option>Advanced</option>
-</select>
+<section class="cta">
+    <h2>Book Your Trainer</h2>
+    <div class="card" style="max-width: 500px; margin: 40px auto;">
+        <form onsubmit="event.preventDefault(); bookTrainer();" style="display: flex; flex-direction: column; gap: 15px;">
+            <label for="trainer" style="text-align: left;">Select Trainer:</label>
+            <select id="trainer" required style="padding: 10px; border-radius: 5px; border: none;">
+                <option value="">Choose a trainer</option>
+                <option>Bobby</option>
+                <option>Akbar</option>
+            </select>
 
-<input type="date" id="date">
-<input type="time" id="time">
+            <label for="package" style="text-align: left;">Select Package:</label>
+            <select id="package" required style="padding: 10px; border-radius: 5px; border: none;">
+                <option value="">Choose a package</option>
+                <option>Basic</option>
+                <option>Intermediate</option>
+                <option>Advanced</option>
+            </select>
 
-<button onclick="bookTrainer()">Book</button>
+            <label for="date" style="text-align: left;">Select Date:</label>
+            <input type="date" id="date" required style="padding: 10px; border-radius: 5px; border: none;">
+
+            <label for="time" style="text-align: left;">Select Time:</label>
+            <input type="time" id="time" required style="padding: 10px; border-radius: 5px; border: none;">
+
+            <button type="submit" class="btn" style="width: 100%; margin-top: 20px;">Book Trainer</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 TalentEdge</p>
+</footer>
 
 <script type="module" src="booking.js"></script>
+
+</body>
+</html>

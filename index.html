@@ -3,66 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TalentEdge</title>
+    <title>TalentEdge - Build Your Career</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav>
-    <h2>TalentEdge</h2>
-    <div>
-        <a href="login.html"><button class="btn">Login</button></a>
-        <a href="register.html"><button class="btn-outline">Join Now</button></a>
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <h1>✨ TalentEdge</h1>
+        </div>
+        <div class="nav-links">
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#trainers" class="nav-link">Trainers</a>
+            <a href="#packages" class="nav-link">Packages</a>
+            <a href="login.html" class="nav-link btn-login">Login</a>
+            <a href="register.html" class="nav-link btn-signup">Sign Up</a>
+        </div>
     </div>
 </nav>
 
 <section class="hero">
-    <h1>Build Your Career Before You Graduate</h1>
-    <p>TalentEdge helps fresh graduates become job-ready with real world skills.</p>
-    <a href="register.html"><button class="btn">Get Started</button></a>
-</section>
-
-<section class="section">
-    <h2>Why TalentEdge?</h2>
-    <div class="card-container">
-        <div class="card">Excel & Data Skills</div>
-        <div class="card">Communication Skills</div>
-        <div class="card">CV & Interview</div>
-        <div class="card">Real Case Study</div>
+    <div class="hero-content">
+        <h1 class="hero-title">Build Your Career <span class="gradient-text">Before You Graduate</span></h1>
+        <p class="hero-subtitle">Get job-ready with real-world skills from industry experts. No cap, just facts. 📈</p>
+        <div class="hero-buttons">
+            <a href="register.html" class="btn btn-primary">Get Started Now</a>
+            <a href="#features" class="btn btn-secondary">Learn More</a>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <div class="floating-card">📚</div>
+        <div class="floating-card">💼</div>
+        <div class="floating-card">🚀</div>
     </div>
 </section>
 
-<section class="section">
-    <h2>Our Trainers</h2>
-    <div class="card-container">
-        <div class="card">
-            <h3>Bobby</h3>
-            <p>Data & Excel Trainer</p>
+<section id="features" class="features">
+    <h2>Why TalentEdge Hits Different</h2>
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Excel & Data Skills</h3>
+            <p>Master the tools that actually matter in the workplace</p>
         </div>
-        <div class="card">
-            <h3>Akbar</h3>
-            <p>Career & Interview Trainer</p>
+        <div class="feature-card">
+            <div class="feature-icon">🎤</div>
+            <h3>Communication Skills</h3>
+            <p>Level up your presentation and networking game</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📝</div>
+            <h3>CV & Interview Prep</h3>
+            <p>Land your dream job with a killer story</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧠</div>
+            <h3>Real Case Studies</h3>
+            <p>Learn from actual projects and industry challenges</p>
         </div>
     </div>
 </section>
 
-<section class="section">
-    <h2>Training Packages</h2>
-    <div class="card-container">
-        <div class="card">Basic Package</div>
-        <div class="card">Intermediate Package</div>
-        <div class="card">Advanced Package</div>
+<section id="trainers" class="trainers">
+    <h2>Meet Your Trainers</h2>
+    <div class="trainers-grid" id="trainers-list">
+        <div class="trainer-card">
+            <div class="trainer-avatar">👨‍💼</div>
+            <h3>Loading trainers...</h3>
+        </div>
+    </div>
+</section>
+
+<section id="packages" class="packages">
+    <h2>Choose Your Package</h2>
+    <div class="packages-grid" id="packages-list">
+        <div class="package-card">
+            <h3>Loading packages...</h3>
+        </div>
     </div>
 </section>
 
 <section class="cta">
-    <h2>Start Your Career Journey Today</h2>
-    <a href="register.html"><button class="btn">Join TalentEdge</button></a>
+    <h2>Ready to Level Up? 🚀</h2>
+    <p>Join thousands of students already building their future</p>
+    <a href="register.html" class="btn btn-primary btn-large">Start Your Journey</a>
 </section>
 
-<footer>
-    <p>© 2026 TalentEdge</p>
+<footer class="footer">
+    <p>© 2026 TalentEdge • Built for the next generation of professionals</p>
+    <div class="footer-links">
+        <a href="admin.html">Admin</a>
+    </div>
 </footer>
+
+<script type="module" src="data-manager.js"></script>
+<script type="module" src="landing.js"></script>
 
 </body>
 </html>

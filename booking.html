@@ -3,54 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Trainer - TalentEdge</title>
+    <title>Book Training - TalentEdge</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav>
-    <h2>TalentEdge</h2>
-    <div>
-        <a href="index.html"><button class="btn">Home</button></a>
-        <a href="admin.html"><button class="btn-outline">Admin</button></a>
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">✨ TalentEdge</a>
+        <div class="nav-links">
+            <a href="booking.html" class="nav-link">My Bookings</a>
+            <a href="admin.html" class="nav-link">Admin</a>
+            <button onclick="logout()" class="btn btn-secondary">Logout</button>
+        </div>
     </div>
 </nav>
 
-<section class="cta">
-    <h2>Book Your Trainer</h2>
-    <div class="card" style="max-width: 500px; margin: 40px auto;">
-        <form onsubmit="event.preventDefault(); bookTrainer();" style="display: flex; flex-direction: column; gap: 15px;">
-            <label for="trainer" style="text-align: left;">Select Trainer:</label>
-            <select id="trainer" required style="padding: 10px; border-radius: 5px; border: none;">
-                <option value="">Choose a trainer</option>
-                <option>Bobby</option>
-                <option>Akbar</option>
-            </select>
+<section class="booking-container">
+    <h1>Book Your Training Session ✨</h1>
+    
+    <div class="booking-content">
+        <div class="booking-form-section">
+            <h2>Find Your Perfect Training</h2>
+            <form onsubmit="event.preventDefault(); bookTrainer();" id="bookingForm" class="auth-form">
+                
+                <div class="form-group">
+                    <label for="subject">Select Subject</label>
+                    <select id="subject" required>
+                        <option value="">Choose a subject...</option>
+                    </select>
+                </div>
 
-            <label for="package" style="text-align: left;">Select Package:</label>
-            <select id="package" required style="padding: 10px; border-radius: 5px; border: none;">
-                <option value="">Choose a package</option>
-                <option>Basic</option>
-                <option>Intermediate</option>
-                <option>Advanced</option>
-            </select>
+                <div class="form-group">
+                    <label for="trainer">Select Trainer</label>
+                    <select id="trainer" required>
+                        <option value="">Choose a trainer...</option>
+                    </select>
+                </div>
 
-            <label for="date" style="text-align: left;">Select Date:</label>
-            <input type="date" id="date" required style="padding: 10px; border-radius: 5px; border: none;">
+                <div class="form-group">
+                    <label for="package">Select Package</label>
+                    <select id="package" required>
+                        <option value="">Choose a package...</option>
+                    </select>
+                </div>
 
-            <label for="time" style="text-align: left;">Select Time:</label>
-            <input type="time" id="time" required style="padding: 10px; border-radius: 5px; border: none;">
+                <div class="form-group">
+                    <label for="date">Select Date</label>
+                    <input type="date" id="date" required>
+                </div>
 
-            <button type="submit" class="btn" style="width: 100%; margin-top: 20px;">Book Trainer</button>
-        </form>
+                <div class="form-group">
+                    <label for="time">Select Time</label>
+                    <input type="time" id="time" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Additional Notes (Optional)</label>
+                    <textarea id="notes" placeholder="Any special requirements..." rows="4"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full">Book Now</button>
+            </form>
+        </div>
+
+        <div class="booking-list-section">
+            <h2>Your Bookings</h2>
+            <div id="bookingsList" class="bookings-list">
+                <p class="empty-state">No bookings yet. Create one to get started! 🚀</p>
+            </div>
+        </div>
     </div>
 </section>
 
-<footer>
-    <p>© 2026 TalentEdge</p>
+<footer class="footer">
+    <p>© 2026 TalentEdge • Your Career Journey Starts Here</p>
 </footer>
 
-<script type="module" src="booking.js"></script>
+<script type="module" src="data-manager.js"></script>
+<script type="module" src="booking-page.js"></script>
 
 </body>
 </html>

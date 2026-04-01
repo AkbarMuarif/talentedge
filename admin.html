@@ -3,29 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin - TalentEdge</title>
+    <title>Admin Dashboard - TalentEdge</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav>
-    <h2>TalentEdge</h2>
-    <div>
-        <a href="index.html"><button class="btn">Home</button></a>
-        <a href="booking.html"><button class="btn-outline">Book Trainer</button></a>
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="index.html" class="logo">✨ TalentEdge Admin</a>
+        <div class="nav-links">
+            <button onclick="logout()" class="btn btn-secondary">Logout</button>
+        </div>
     </div>
 </nav>
 
-<section class="cta">
-    <h2>Admin - Booking Management</h2>
-    <div id="list" style="max-width: 800px; margin: 40px auto; text-align: left;"></div>
-</section>
+<div class="admin-container">
+    <aside class="admin-sidebar">
+        <button onclick="showTab('dashboard')" class="sidebar-btn active">📊 Dashboard</button>
+        <button onclick="showTab('trainers')" class="sidebar-btn">👨‍🏫 Trainers</button>
+        <button onclick="showTab('packages')" class="sidebar-btn">💼 Packages</button>
+        <button onclick="showTab('subjects')" class="sidebar-btn">📚 Subjects</button>
+        <button onclick="showTab('bookings')" class="sidebar-btn">📋 Bookings</button>
+    </aside>
 
-<footer>
-    <p>© 2026 TalentEdge</p>
+    <main class="admin-content">
+        <!-- Dashboard Tab -->
+        <div id="dashboard" class="admin-tab active">
+            <h1>Dashboard 📈</h1>
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalTrainers">0</div>
+                    <p>Total Trainers</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalPackages">0</div>
+                    <p>Packages Available</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalSubjects">0</div>
+                    <p>Subjects Offered</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalBookings">0</div>
+                    <p>Total Bookings</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trainers Tab -->
+        <div id="trainers" class="admin-tab">
+            <div class="tab-header">
+                <h1>Manage Trainers 👨‍🏫</h1>
+                <button onclick="openTrainerModal()" class="btn btn-primary">+ Add Trainer</button>
+            </div>
+            <div id="trainersList" class="items-grid">
+                <p class="loading">Loading trainers...</p>
+            </div>
+        </div>
+
+        <!-- Packages Tab -->
+        <div id="packages" class="admin-tab">
+            <div class="tab-header">
+                <h1>Manage Packages 💼</h1>
+                <button onclick="openPackageModal()" class="btn btn-primary">+ Add Package</button>
+            </div>
+            <div id="packagesList" class="items-grid">
+                <p class="loading">Loading packages...</p>
+            </div>
+        </div>
+
+        <!-- Subjects Tab -->
+        <div id="subjects" class="admin-tab">
+            <div class="tab-header">
+                <h1>Manage Subjects 📚</h1>
+                <button onclick="openSubjectModal()" class="btn btn-primary">+ Add Subject</button>
+            </div>
+            <div id="subjectsList" class="items-grid">
+                <p class="loading">Loading subjects...</p>
+            </div>
+        </div>
+
+        <!-- Bookings Tab -->
+        <div id="bookings" class="admin-tab">
+            <h1>All Bookings 📋</h1>
+            <div id="bookingsList" class="bookings-table">
+                <p class="loading">Loading bookings...</p>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Trainer Modal -->
+<div id="trainerModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeTrainerModal()">&times;</span>
+        <h2 id="trainerModalTitle">Add Trainer</h2>
+        <form onsubmit="event.preventDefault(); saveTrainer();" class="modal-form">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="trainerName" required>
+            </div>
+            <div class="form-group">
+                <label>Specialty</label>
+                <input type="text" id="trainerSpecialty" required>
+            </div>
+            <div class="form-group">
+                <label>Bio</label>
+                <textarea id="trainerBio" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Emoji/Avatar</label>
+                <input type="text" id="trainerImage" placeholder="e.g., 👨‍💼" value="👨‍🏫">
+            </div>
+            <div class="form-group">
+                <label>Rating (1-5)</label>
+                <input type="number" id="trainerRating" min="1" max="5" step="0.1" value="5">
+            </div>
+            <button type="submit" class="btn btn-primary">Save Trainer</button>
+        </form>
+    </div>
+</div>
+
+<!-- Package Modal -->
+<div id="packageModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closePackageModal()">&times;</span>
+        <h2 id="packageModalTitle">Add Package</h2>
+        <form onsubmit="event.preventDefault(); savePackage();" class="modal-form">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="packageName" required>
+            </div>
+            <div class="form-group">
+                <label>Price ($)</label>
+                <input type="number" id="packagePrice" min="0" required>
+            </div>
+            <div class="form-group">
+                <label>Duration</label>
+                <input type="text" id="packageDuration" placeholder="e.g., 4 weeks" required>
+            </div>
+            <div class="form-group">
+                <label>Number of Sessions</label>
+                <input type="number" id="packageSessions" min="1" required>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="packageDescription" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Package</button>
+        </form>
+    </div>
+</div>
+
+<!-- Subject Modal -->
+<div id="subjectModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeSubjectModal()">&times;</span>
+        <h2 id="subjectModalTitle">Add Subject</h2>
+        <form onsubmit="event.preventDefault(); saveSubject();" class="modal-form">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="subjectName" required>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                <textarea id="subjectDescription" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Icon/Emoji</label>
+                <input type="text" id="subjectIcon" placeholder="e.g., 📊" value="📚">
+            </div>
+            <button type="submit" class="btn btn-primary">Save Subject</button>
+        </form>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>© 2026 TalentEdge Admin Panel</p>
 </footer>
 
-<script type="module" src="admin.js"></script>
+<script type="module" src="admin-panel.js"></script>
 
 </body>
 </html>
